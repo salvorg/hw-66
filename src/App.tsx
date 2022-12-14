@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Link, Route, Routes} from "react-router-dom";
+import Home from "./containers/Home/Home";
+import MealForm from "./components/MealForm/MealForm";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header className='mb-3'>
+        <h2 className='mt-4 pb-4 ps-3 border-bottom'>
+          <Link to={'/'} className='text-body'>
+            Calorie tracker
+          </Link>
+        </h2>
       </header>
+      <main className='container-fluid'>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/meals/new' element={<MealForm/>}/>
+          <Route path='/meals/edit/:id' element={<MealForm/>}/>
+        </Routes>
+      </main>
     </div>
   );
 }
